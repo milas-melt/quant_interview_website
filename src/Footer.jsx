@@ -46,8 +46,8 @@ export default function Footer() {
                         </a>
                     ))}
                 </div>
-                <div className="mt-8 md:order-1 md:mt-0 w-3/4">
-                    <p className="text-xs leading-5 text-gray-500 text-left">
+                <div className="mt-8 md:order-1 md:mt-0 md:w-3/4 lg:w-3/4">
+                    <p className="text-xs leading-5 text-gray-500 text-justify">
                         Last modified: June 15th, 2023 Currently, only questions
                         from the first 26 pages of "A Practical Guide to
                         Quantitative Finance Interviews" are available on this
