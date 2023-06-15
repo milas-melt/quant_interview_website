@@ -48,12 +48,14 @@ export default function Footer() {
                 </div>
                 <div className="mt-8 md:order-1 md:mt-0 w-3/4">
                     <p className="text-xs leading-5 text-gray-500 text-left">
-                        Note: Covered the 26 pages. Also, not all the solutions
-                        are posted here just because some contain images and
-                        long equations that would take time to render in this
-                        website. All the credit goes to Xinfeng Zhou, the author
-                        of the book "A practical guide to quantitative finance
-                        interviews".
+                        Last modified: June 15th, 2023 Currently, only questions
+                        from the first 26 pages of "A Practical Guide to
+                        Quantitative Finance Interviews" are available on this
+                        website. More questions will be added in the future. To
+                        contribute and expand the question coverage, please edit
+                        the "questions.json" file on GitHub. Ensure complex
+                        equations are in LaTeX format. Credit goes to Xinfeng
+                        Zhou, the author of the book.
                     </p>
                 </div>
             </div>
