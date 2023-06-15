@@ -55,7 +55,7 @@ export default function App() {
 
     return (
         <div className="bg-white">
-            <div className="mx-auto max-w-2xl py-8 sm:py-16 lg:py-24">
+            <div className="mx-auto max-w-2xl py-8 px-4 sm:py-16 lg:py-24">
                 <div className="hidden sm:mb-8 sm:flex sm:justify-center">
                     <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
                         Click here to access the{" "}
