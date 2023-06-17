@@ -4,7 +4,8 @@ import ToolTip from "./ToolTip";
 import Footer from "./Footer";
 
 export default function App() {
-    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(9);
+    // const [chapter, setChapter] = useState("brainteasers");
     const [solution, setSolution] = useState("");
     const [hint, setHint] = useState("");
     const [showHint, setShowHint] = useState(false);
@@ -21,25 +22,38 @@ export default function App() {
         };
     }, []);
 
-    const getNextQuestion = () => {
-        if (currentQuestionIndex < questions.length - 1) {
-            setCurrentQuestionIndex(currentQuestionIndex + 1);
-            setSolution(""); // Clear the solution when moving to the next question
-            setHint(questions[currentQuestionIndex + 1].hint);
-            setShowHint(false); // Hide the hint when moving to the next question
-            setSeconds(0); // Reset the timer when moving to the next question
-        } else {
-            // If you want to loop back to the first question when reaching the end
-            setCurrentQuestionIndex(0);
+    // Show questions in order
+    // const getNextQuestion = () => {
+    //     if (currentQuestionIndex < questions.brainteasers.length - 1) {
+    //         setCurrentQuestionIndex(currentQuestionIndex + 1);
+    //         setSolution(""); // Clear the solution when moving to the next question
+    //         setHint(questions.brainteasers[currentQuestionIndex + 1].hint);
+    //         setShowHint(false); // Hide the hint when moving to the next question
+    //         setSeconds(0); // Reset the timer when moving to the next question
+    //     } else {
+    //         // If you want to loop back to the first question when reaching the end
+    //         setCurrentQuestionIndex(0);
 
-            // If you want to disable the button when reaching the end
-            // setCurrentQuestionIndex(questions.length - 1);
-        }
+    //         // If you want to disable the button when reaching the end
+    //         // setCurrentQuestionIndex(questions.brainteasers.length - 1);
+    //     }
+    // };
+    // Show questions in random order
+    const getNextQuestion = () => {
+        const randomIndex = Math.floor(
+            Math.random() * questions.brainteasers.length
+        );
+        setCurrentQuestionIndex(randomIndex);
+        setSolution(""); // Clear the solution when moving to the next question
+        setHint(questions.brainteasers[randomIndex].hint);
+        setShowHint(false); // Hide the hint when moving to the next question
+        setSeconds(0); // Reset the timer when moving to the next question
     };
 
     const showSolution = () => {
         // Get the current question's solution
-        const currentSolution = questions[currentQuestionIndex].solution;
+        const currentSolution =
+            questions.brainteasers[currentQuestionIndex].solution;
 
         // Update the state variable with the solution
         setSolution(currentSolution);
@@ -101,9 +115,9 @@ export default function App() {
                         </div>
                     )}
                     {/* Question title */}
-                    {questions[currentQuestionIndex].name ? (
+                    {questions.brainteasers[currentQuestionIndex].name ? (
                         <h1 className="text-xl font-bold tracking-tight text-gray-900">
-                            {questions[currentQuestionIndex].name}
+                            {questions.brainteasers[currentQuestionIndex].name}
                         </h1>
                     ) : (
                         <h1 className="text-xl font-bold tracking-tight text-gray-900">
@@ -113,7 +127,7 @@ export default function App() {
 
                     {/* Question text */}
                     <p className="mt-2 text-lg leading-8 text-gray-600 text-justify">
-                        {questions[currentQuestionIndex].question}
+                        {questions.brainteasers[currentQuestionIndex].question}
                     </p>
 
                     {/* Hint */}
@@ -144,7 +158,7 @@ export default function App() {
                         </div>
                     )}
                     {/* Solution */}
-                    {solution && (
+                    {solution && solution !== "N/A" && (
                         <div className="mt-4">
                             {/* Solution title */}
                             <h2 className="text-lg font-bold text-gray-900">
@@ -153,6 +167,21 @@ export default function App() {
                             {/* Solution text */}
                             <p className="mt-2 text-gray-600 text-justify">
                                 {solution}
+                            </p>
+                        </div>
+                    )}
+                    {solution === "N/A" && (
+                        <div className="mt-4">
+                            {/* Solution title */}
+                            <h2 className="text-lg font-bold text-gray-900">
+                                Solution:
+                            </h2>
+                            {/* Solution text */}
+                            <p className="mt-2 text-gray-600 text-justify">
+                                Please check the book for the solution. It
+                                contains equations that cannot be rendered (yet)
+                                in this website, which is why the solution is
+                                not displayed here.
                             </p>
                         </div>
                     )}
