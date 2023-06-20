@@ -59,6 +59,7 @@ export default function App() {
         // setSolution(questions.brainteasers[randomIndex].solution); // Clear the solution when moving to the next question
         setHint(questions.brainteasers[randomIndex].hint);
         setShowHint(false); // Hide the hint when moving to the next question
+        setShowSolution(false); // Hide the solution when moving to the next question
         setSeconds(0); // Reset the timer when moving to the next question
     };
 
