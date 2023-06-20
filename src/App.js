@@ -4,11 +4,19 @@ import ToolTip from "./ToolTip";
 import Footer from "./Footer";
 
 export default function App() {
-    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(9);
+    const START_QUESTION_INDEX = 9;
+
+    const [currentQuestionIndex, setCurrentQuestionIndex] =
+        useState(START_QUESTION_INDEX);
     // const [chapter, setChapter] = useState("brainteasers");
-    const [solution, setSolution] = useState("");
-    const [hint, setHint] = useState("");
+    const [solution, setSolution] = useState(
+        questions.brainteasers[START_QUESTION_INDEX].solution
+    );
+    const [hint, setHint] = useState(
+        questions.brainteasers[START_QUESTION_INDEX].hint
+    );
     const [showHint, setShowHint] = useState(false);
+    const [showSolution, setShowSolution] = useState(false);
     const [seconds, setSeconds] = useState(0);
     const [showTimer, setShowTimer] = useState(false);
 
@@ -44,19 +52,10 @@ export default function App() {
             Math.random() * questions.brainteasers.length
         );
         setCurrentQuestionIndex(randomIndex);
-        setSolution(""); // Clear the solution when moving to the next question
+        setSolution(questions.brainteasers[randomIndex].solution); // Clear the solution when moving to the next question
         setHint(questions.brainteasers[randomIndex].hint);
         setShowHint(false); // Hide the hint when moving to the next question
         setSeconds(0); // Reset the timer when moving to the next question
-    };
-
-    const showSolution = () => {
-        // Get the current question's solution
-        const currentSolution =
-            questions.brainteasers[currentQuestionIndex].solution;
-
-        // Update the state variable with the solution
-        setSolution(currentSolution);
     };
 
     const formatTime = (time) => {
@@ -158,7 +157,7 @@ export default function App() {
                         </div>
                     )}
                     {/* Solution */}
-                    {solution && solution !== "N/A" && (
+                    {showSolution && (
                         <div className="mt-4">
                             {/* Solution title */}
                             <h2 className="text-lg font-bold text-gray-900">
@@ -170,27 +169,11 @@ export default function App() {
                             </p>
                         </div>
                     )}
-                    {solution === "N/A" && (
-                        <div className="mt-4">
-                            {/* Solution title */}
-                            <h2 className="text-lg font-bold text-gray-900">
-                                Solution:
-                            </h2>
-                            {/* Solution text */}
-                            <p className="mt-2 text-gray-600 text-justify">
-                                Please check the book for the solution. It
-                                contains equations that cannot be rendered (yet)
-                                in this website, which is why the solution is
-                                not displayed here.
-                            </p>
-                        </div>
-                    )}
 
                     <div className="mt-10 flex items-center justify-center gap-x-6">
                         {/* Solution button */}
                         <button
-                            onClick={showSolution}
-                            href="#"
+                            onClick={() => setShowSolution(!showSolution)} // {() => setShowHint(!showHint)}
                             className="rounded-md bg-red-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
                         >
                             Solution
@@ -199,7 +182,7 @@ export default function App() {
                         {/* Next question button */}
                         <button
                             onClick={getNextQuestion}
-                            className="text-sm font-semibold leading-6 text-gray-900"
+                            className="text-sm font-semibold leading-6 text-gray-900 align-bottom"
                         >
                             Next question <span aria-hidden="true">→</span>
                         </button>
