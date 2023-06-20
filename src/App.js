@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import questions from "./questions.json";
 import ToolTip from "./ToolTip";
 import Footer from "./Footer";
+import QuestionBox from "./components/QuestionBox";
+import HintModal from "./components/HintModal";
 
 export default function App() {
     const START_QUESTION_INDEX = 9;
@@ -9,9 +11,9 @@ export default function App() {
     const [currentQuestionIndex, setCurrentQuestionIndex] =
         useState(START_QUESTION_INDEX);
     // const [chapter, setChapter] = useState("brainteasers");
-    const [solution, setSolution] = useState(
-        questions.brainteasers[START_QUESTION_INDEX].solution
-    );
+    // const [solution, setSolution] = useState(
+    //     questions.brainteasers[START_QUESTION_INDEX].solution
+    // );
     const [hint, setHint] = useState(
         questions.brainteasers[START_QUESTION_INDEX].hint
     );
@@ -20,6 +22,7 @@ export default function App() {
     const [seconds, setSeconds] = useState(0);
     const [showTimer, setShowTimer] = useState(false);
 
+    // console.log(questions.brainteasers[currentQuestionIndex].question);
     useEffect(() => {
         const interval = setInterval(() => {
             setSeconds((prevSeconds) => prevSeconds + 1);
@@ -52,7 +55,7 @@ export default function App() {
             Math.random() * questions.brainteasers.length
         );
         setCurrentQuestionIndex(randomIndex);
-        setSolution(questions.brainteasers[randomIndex].solution); // Clear the solution when moving to the next question
+        // setSolution(questions.brainteasers[randomIndex].solution); // Clear the solution when moving to the next question
         setHint(questions.brainteasers[randomIndex].hint);
         setShowHint(false); // Hide the hint when moving to the next question
         setSeconds(0); // Reset the timer when moving to the next question
@@ -67,8 +70,8 @@ export default function App() {
     };
 
     return (
-        <div className="bg-white">
-            <div className="mx-auto max-w-2xl py-8 px-4 sm:py-16 lg:py-24">
+        <div className="bg-white flex flex-col max-h-screen justify-between">
+            <div className="mx-auto  w-2/3 max-w-2xl py-8  sm:py-16 lg:py-16">
                 <div className="hidden sm:mb-8 sm:flex sm:justify-center">
                     <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
                         Click here to access the{" "}
@@ -90,7 +93,7 @@ export default function App() {
                     {showTimer ? (
                         // align the timer and the button in the same row
 
-                        <div className="flex justify-between">
+                        <div className="flex justify-between mb-4">
                             <div>
                                 <p>{formatTime(seconds)}</p>
                             </div>
@@ -104,7 +107,7 @@ export default function App() {
                             </ToolTip>
                         </div>
                     ) : (
-                        <div className="flex justify-end">
+                        <div className="flex justify-end mb-4">
                             <button
                                 onClick={() => setShowTimer(true)}
                                 className="rounded-md bg-gray-600 px-3 py-1 text-sm font-semibold text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600"
@@ -114,61 +117,54 @@ export default function App() {
                         </div>
                     )}
                     {/* Question title */}
-                    {questions.brainteasers[currentQuestionIndex].name ? (
-                        <h1 className="text-xl font-bold tracking-tight text-gray-900">
-                            {questions.brainteasers[currentQuestionIndex].name}
-                        </h1>
-                    ) : (
-                        <h1 className="text-xl font-bold tracking-tight text-gray-900">
-                            Question
-                        </h1>
-                    )}
+                    {/* <div className="shadow sm:rounded-lg">
+                        <div className="px-4 py-5 sm:p-6">
+                            
+                        </div>
+                    </div> */}
 
-                    {/* Question text */}
-                    <p className="mt-2 text-lg leading-8 text-gray-600 text-justify">
-                        {questions.brainteasers[currentQuestionIndex].question}
-                    </p>
+                    <QuestionBox
+                        question={
+                            questions.brainteasers[currentQuestionIndex]
+                                .question
+                        }
+                        question_name={
+                            questions.brainteasers[currentQuestionIndex].name
+                        }
+                    />
 
                     {/* Hint */}
 
-                    {hint && (
-                        <div className="mt-4">
-                            <button
-                                onClick={() => setShowHint(!showHint)}
-                                className="text-sm font-semibold leading-6 text-red-900"
-                            >
-                                {showHint
-                                    ? "Hide Hint"
-                                    : "The book provided a hint. Click here to see it."}
-                            </button>
-                            {showHint && (
-                                <div>
-                                    {/* Hint title */}
-                                    <h2 className="text-lg font-bold text-gray-900">
-                                        Hint:
-                                    </h2>
+                    <button
+                        onClick={() => setShowHint(!showHint)}
+                        className={`${
+                            hint ? "visible" : "invisible"
+                        } text-sm font-semibold leading-6 text-red-900`}
+                    >
+                        The book provided a hint. Click here to see it.
+                    </button>
 
-                                    {/* Hint text */}
-                                    <p className="mt-2 text-gray-600 text-justify">
-                                        {hint}
-                                    </p>
-                                </div>
-                            )}
-                        </div>
-                    )}
+                    <HintModal
+                        open={showHint}
+                        setOpen={setShowHint}
+                        hint={hint}
+                    />
+
                     {/* Solution */}
-                    {showSolution && (
-                        <div className="mt-4">
-                            {/* Solution title */}
-                            <h2 className="text-lg font-bold text-gray-900">
-                                Solution:
-                            </h2>
-                            {/* Solution text */}
-                            <p className="mt-2 text-gray-600 text-justify">
-                                {solution}
-                            </p>
-                        </div>
-                    )}
+
+                    <div
+                        className={`${
+                            showSolution ? "visible" : "invisible"
+                        } mt-4`}
+                    >
+                        <QuestionBox
+                            question={
+                                questions.brainteasers[currentQuestionIndex]
+                                    .solution
+                            }
+                            question_name="Solution"
+                        />
+                    </div>
 
                     <div className="mt-10 flex items-center justify-center gap-x-6">
                         {/* Solution button */}
@@ -176,7 +172,7 @@ export default function App() {
                             onClick={() => setShowSolution(!showSolution)} // {() => setShowHint(!showHint)}
                             className="rounded-md bg-red-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
                         >
-                            Solution
+                            {showSolution ? "Hide" : "Show"} Solution
                         </button>
 
                         {/* Next question button */}

@@ -31,8 +31,10 @@ const navigation = [
 export default function Footer() {
     return (
         <footer className="bg-white">
-            <div className="mx-auto max-w-7xl px-6 py-12 md:flex md:items-center md:justify-between lg:px-8">
-                <div className="flex justify-center space-x-6 md:order-2">
+            <div className="mx-auto  px-6  md:flex md:items-center md:justify-between lg:px-8">
+                <div className="flex items-center justify-center space-x-2 md:order-2">
+                    {" "}
+                    {/* Updated class */}
                     {navigation.map((item) => (
                         <a
                             key={item.name}
@@ -46,7 +48,9 @@ export default function Footer() {
                         </a>
                     ))}
                 </div>
-                <div className="mt-8 md:order-1 md:mt-0 md:w-3/4 lg:w-3/4">
+                <div className="mt-2 md:order-1 md:mt-0 md:w-3/4 lg:w-3/4">
+                    {" "}
+                    {/* Updated class */}
                     <p className="text-xs leading-5 text-gray-500 text-justify">
                         Last modified: June 15th, 2023 Currently, only questions
                         from the first 26 pages of "A Practical Guide to

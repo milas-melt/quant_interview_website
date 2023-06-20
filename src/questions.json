@@ -65,19 +65,16 @@
         },
         {
             "name": "Doors to offer",
-            "question": "You are facing two doors. One leads to your job offer and the other leads to exit. In front of either door is a guard. One guard always tells lies and the other always tells the truth. You can only ask one guard one yes/no question. Assuming you do want to get the job offer, what question will you ask? ",
-            "solution": "N/A"
+            "question": "You are facing two doors. One leads to your job offer and the other leads to exit. In front of either door is a guard. One guard always tells lies and the other always tells the truth. You can only ask one guard one yes/no question. Assuming you do want to get the job offer, what question will you ask? "
         },
         {
             "name": "Message Delivery",
             "question": "You are facing two doors. One leads to your job offer and the other leads to exit. In front of either door is a guard. One guard always tells lies and the other always tells the truth. You can only ask one guard one yes/no question. Assuming you do want to get the job offer, what question will you ask? ",
-            "solution": "N/A",
             "hint": "You can have more than one lock on the box. "
         },
         {
             "name": "Last ball",
             "question": " Consider the changes in the number ofred and blue balls after each step. ",
-            "solution": "N/A",
             "hint": " Consider the changes in the number ofred and blue balls after each step. "
         },
         {
@@ -108,18 +105,15 @@
         },
         {
             "name": "Clock Pieces",
-            "question": "A clock (numbered 1 -12 clockwise) fell off the wall and broke into three pieces. You find that the sums of the numbers on each piece are equal. What are the numbers on each piece? (No strange-shaped piece is allowed.) ",
-            "solution": "N/A"
+            "question": "A clock (numbered 1 -12 clockwise) fell off the wall and broke into three pieces. You find that the sums of the numbers on each piece are equal. What are the numbers on each piece? (No strange-shaped piece is allowed.) "
         },
         {
             "name": "Missing integers",
-            "question": "Suppose we have 98 distinct integers from 1 to 100. What is a good way to find out the two missing integers (within [ 1, 100])? ",
-            "solution": "N/A"
+            "question": "Suppose we have 98 distinct integers from 1 to 100. What is a good way to find out the two missing integers (within [ 1, 100])? "
         },
         {
             "name": "Counterfeit coins I",
             "question": "There are 10 bags with 100 identical coins in each bag. In all bags but one, each coin weighs 10 grams. However, all the coins in the counterfeit bag weigh either 9 or 11 grams. Can you find the counterfeit bag in only one weighing, using a digital scale that tells the exact weight? ",
-            "solution": "N/A",
             "hint": "In order to find the counterfeit coin bag in one weighing, the number of coins from each bag must be different. If we use the same number of coins from two bags, symmetry will prevent you from distinguish these two bags if one is the counterfeit coin bag. "
         },
         {
@@ -167,24 +161,20 @@
         },
         {
             "name": "Division by 9",
-            "question": "Given an arbitrary integer, come up with a rule to decide whether it is divisible by 9 and prove it. ",
-            "solution": "N/A"
+            "question": "Given an arbitrary integer, come up with a rule to decide whether it is divisible by 9 and prove it. "
         },
         {
             "name": "Chameleon Colors",
             "question": "A remote island has three types of chameleons with the following population: 13 red chameleons, 15 green chameleons and 17 blue chameleons. Each time two chameleons with different colors meet, they would change their color to the third color. For example, if a green chameleon meets a red chameleon, they both change their color to blue. Is it ever possible for all chameleons to become the same color? Why or why not?",
-            "solution": "N/A",
             "hint": "consider the numbers in module of 3."
         },
         {
             "name": "Coin split problem ",
-            "question": "You split 1000 coins into two piles and count the number of coins in each pile. If there are x coins in pile one and y coins in pile two, you multiple x by y to get xy. Then you split both piles further, repeat the same counting and multiplication process, and add the new multiplication results to the original. For example, you split x to x_1 and x_2, y to y_1 and y_2, then the sum is xy + x_1 * x2 + y_1 * y_2 The same process is repeated until you only have piles of 1 stone each. What is the final sum? (The final 1 's are not included in the sum.) Prove that you always get the same answer no matter how the piles are divided. ",
-            "solution": "N/A"
+            "question": "You split 1000 coins into two piles and count the number of coins in each pile. If there are x coins in pile one and y coins in pile two, you multiple x by y to get xy. Then you split both piles further, repeat the same counting and multiplication process, and add the new multiplication results to the original. For example, you split x to x_1 and x_2, y to y_1 and y_2, then the sum is xy + x_1 * x2 + y_1 * y_2 The same process is repeated until you only have piles of 1 stone each. What is the final sum? (The final 1 's are not included in the sum.) Prove that you always get the same answer no matter how the piles are divided. "
         },
         {
             "name": "Chocolate bar problem",
             "question": "A chocolate bar has 6 rows and 8 columns ( 48 small 1x1 squares). You break it into individual squares by making a number of breaks. Each time, break one rectangle into two smaller rectangles. For example, in the first step you can break the 6x8 chocolate bar into a 6 x 3 one and a 6 x 5 one. What is the total number of breaks needed in order to break the chocolate bar into 48 small squares?",
-            "solution": "N/A",
             "hint": "f(2) = 1, f(3)-f(2) = 2 and f(4)-f(3) = 3. Should give you enough hint to realise the pattern is f(n) = 1 + 2 + ... + (n-1) = n(n-1)/2"
         }
     ]
