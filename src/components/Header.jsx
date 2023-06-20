@@ -5,7 +5,7 @@ import HelpModal from "./HelpModal";
 
 const navigation = [
     {
-        name: "Access the quant prep book",
+        name: "👉 Access the quant prep book 👈",
         href: "https://usermanual.wiki/Document/Practical20Guide20To20Quantitative20Finance20Interview.604244935.pdf",
     },
     // { name: "Features", href: "#" },
@@ -35,12 +35,13 @@ export default function Header() {
                 </div>
                 <div className="hidden lg:flex lg:gap-x-12">
                     {navigation.map((item) => (
-                        <p
+                        <a
                             key={item.name}
+                            href={item.href}
                             className="text-sm font-semibold leading-6 text-white"
                         >
                             {item.name}
-                        </p>
+                        </a>
                     ))}
                 </div>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
