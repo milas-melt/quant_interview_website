@@ -12,7 +12,7 @@ export default function QuestionBox({ question_name, question }) {
                     </h3>
                 )}
 
-                <div className="mt-2  text-sm text-gray-500 text-justify">
+                <div className="mt-2  text-sm text-gray-800 text-justify">
                     {question ? (
                         <p>{question}</p>
                     ) : (

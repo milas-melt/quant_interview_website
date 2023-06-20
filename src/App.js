@@ -4,6 +4,7 @@ import ToolTip from "./ToolTip";
 import Footer from "./Footer";
 import QuestionBox from "./components/QuestionBox";
 import HintModal from "./components/HintModal";
+import Header from "./components/Header";
 
 export default function App() {
     const START_QUESTION_INDEX = 9;
@@ -71,24 +72,8 @@ export default function App() {
 
     return (
         <div className="bg-white flex flex-col max-h-screen justify-between">
+            <Header />
             <div className="mx-auto  w-2/3 max-w-2xl py-8  sm:py-16 lg:py-16">
-                <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-                    <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-                        Click here to access the{" "}
-                        <a
-                            href="https://usermanual.wiki/Document/Practical20Guide20To20Quantitative20Finance20Interview.604244935.pdf"
-                            target="_blank"
-                            rel="noreferrer"
-                            className="font-semibold text-red-600"
-                        >
-                            <span
-                                className="absolute inset-0"
-                                aria-hidden="true"
-                            />
-                            PDF Book <span aria-hidden="true">&rarr;</span>
-                        </a>
-                    </div>
-                </div>
                 <div className="text-center">
                     {showTimer ? (
                         // align the timer and the button in the same row
@@ -133,28 +118,13 @@ export default function App() {
                         }
                     />
 
-                    {/* Hint */}
-
-                    <button
-                        onClick={() => setShowHint(!showHint)}
-                        className={`${
-                            hint ? "visible" : "invisible"
-                        } text-sm font-semibold leading-6 text-red-900`}
-                    >
-                        The book provided a hint. Click here to see it.
-                    </button>
-
-                    <HintModal
-                        open={showHint}
-                        setOpen={setShowHint}
-                        hint={hint}
-                    />
-
                     {/* Solution */}
 
                     <div
                         className={`${
-                            showSolution ? "visible" : "invisible"
+                            showSolution
+                                ? "lg:visible"
+                                : "hidden lg:block lg:invisible"
                         } mt-4`}
                     >
                         <QuestionBox
@@ -167,6 +137,23 @@ export default function App() {
                     </div>
 
                     <div className="mt-10 flex items-center justify-center gap-x-6">
+                        {/* Hint */}
+
+                        <button
+                            onClick={() => setShowHint(!showHint)}
+                            className={`${
+                                hint ? "visible" : "invisible"
+                            } rounded-md bg-gray-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600`}
+                        >
+                            {showSolution ? "Hide" : "Show"} Hint
+                        </button>
+
+                        <HintModal
+                            open={showHint}
+                            setOpen={setShowHint}
+                            hint={hint}
+                        />
+
                         {/* Solution button */}
                         <button
                             onClick={() => setShowSolution(!showSolution)} // {() => setShowHint(!showHint)}
