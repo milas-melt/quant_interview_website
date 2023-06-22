@@ -74,7 +74,7 @@
         },
         {
             "name": "Last ball",
-            "question": " Consider the changes in the number ofred and blue balls after each step. ",
+            "question": "A bag has 20 blue balls and 14 red balls. Each time you randomly take two balls out. (Assume each ball in the bag has equal probability of being taken). You do not put these two balls back. Instead, if both balls have the same color, you add a blue ball to the bag; if they have different colors, you add a red ball to the bag. Assume that you have an unlimited supply of blue and red balls, if you keep on repeating this process, what will be the color of the last ball left in the bag? 7 What if the bag has 20 blue balls and l 3 red balls instead? ",
             "hint": " Consider the changes in the number ofred and blue balls after each step. "
         },
         {
